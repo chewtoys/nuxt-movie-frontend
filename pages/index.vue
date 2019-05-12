@@ -1,17 +1,16 @@
 <template>
-  <section class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-          <h1 class="text-center">Test Boostrap</h1>
-      </div>  
-    </div>
-  </section>
+  <div class="container-fluid">
+    <HomepageSlider />
+  </div>
 </template>
 
 <script>
+import HomepageSlider from '~/components/HomepageSlider.vue';
 
 export default {
-
+  components: {
+    HomepageSlider
+  }
 }
 </script>
 

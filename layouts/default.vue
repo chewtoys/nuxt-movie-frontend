@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-black">
     <Navbar />
     <nuxt />
   </div>
@@ -13,3 +13,13 @@ export default {
   }
 }
 </script>
+
+<style>
+html {
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: black !important;
+}
+.bg-black {
+  background-color: black !important;
+}
+</style>
