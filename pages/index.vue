@@ -1,15 +1,23 @@
 <template>
   <div class="container-fluid">
-    <HomepageSlider />
+    <Movies v-if="featured" :movies="featured" />
   </div>
 </template>
 
 <script>
-import HomepageSlider from '~/components/HomepageSlider.vue';
+import Movies from '~/components/Movies.vue'
 
 export default {
+  asyncData({ app, params, query, error }) {
+      return app.$axios.$get('http://localhost:8000/api/v1/moviedb/movies/trending')
+      .then(res => {
+            return {
+              featured: res.results
+            }
+      })
+  },
   components: {
-    HomepageSlider
+    Movies
   }
 }
 </script>

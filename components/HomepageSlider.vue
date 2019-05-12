@@ -14,21 +14,27 @@
 import axios from 'axios';
 
 export default {
+    asyncData({ app, params, query, error }) {
+        return app.$axios.$get('http://localhost:8000/api/v1/moviedb/movies/trending')
+        .then(res => {
+            featured = res.data.results;
+        })
+    },
     data() {
         return {
             featured: {}
         }
     },
     created () {
-        this.getFeatured();
+        // this.getFeatured();
     },
     methods: {
-        async  getFeatured() {
-           await axios.get('http://localhost:8000/api/v1/moviedb/movies/trending')
-            .then(res => {
-                this.featured = res.data.results;
-            })
-        },
+        // async  getFeatured() {
+        //    await axios.get('http://localhost:8000/api/v1/moviedb/movies/trending')
+        //     .then(res => {
+        //         this.featured = res.data.results;
+        //     })
+        // },
         viewMovie(id) {
             let url = '/movie/' + id;
             this.$router.push(url);

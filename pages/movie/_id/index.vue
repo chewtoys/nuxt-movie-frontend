@@ -7,10 +7,10 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-4">
                 <img class="img-fluid" :src='"https://image.tmdb.org/t/p/w500/" + movie.poster_path'>
             </div>
-            <div class="col-md-8">
+            <div class="col-8">
                 <br>
                 <span class="release-date">Release Date: {{movie.release_date}}</span>
                 <p class="genres mb-0">Genres:
@@ -32,25 +32,22 @@
 <script>
 import AddToWatchList from '~/components/AddToWatchList';
 export default {
+    asyncData({ app, params, query, error }) {
+        return app.$axios.$get('/api/v1/moviedb/movies/info/' + params.id)
+        .then(res => {
+            return {
+                movie: res
+            }
+        });
+    },
     components: {
         AddToWatchList,
     },
-    data() {
-        return {
-            movie: {}
-        }
-    },
     created () {
-        // console.log(this.$router.currentRoute.params.id);
-        this.getMovie();
+  
     },
     methods: {
-        async getMovie() {
-            await this.$axios.$get('/api/v1/moviedb/movies/info/' + this.$router.currentRoute.params.id)
-            .then(res => {
-                this.movie = res;
-            });
-        }
+
     },
 }
 </script>

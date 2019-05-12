@@ -5,10 +5,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
+    
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <nuxt-link class="nav-link" to="/">Home</nuxt-link>
       </li>
+      
     </ul>
 
     <!-- User Thing -->
@@ -38,6 +40,17 @@
     </ul>
     </template>
     <!-- /Auth Routes -->
+    
+    <!-- Search -->
+    <form class="form-inline ml-lg-3" @submit.prevent="search">
+      <div class="input-group">
+        <input v-model="searchQuery" class="form-control" type="search" placeholder="Search">
+        <div class="input-group-append">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+    <!-- /Search -->
 
   </div>
 </nav>
@@ -45,9 +58,18 @@
 
 <script>
 export default {
+    data() {
+      return {
+        searchQuery: ''
+      }
+    },
     methods: {
         logout() {
             this.$auth.logout();
+        },
+        search() {
+          let url = '/search';
+          this.$router.push({ path: url, query: { search: this.searchQuery } });
         }
     },
 }
