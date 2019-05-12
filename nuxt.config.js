@@ -40,11 +40,22 @@ export default {
   css: [
   ],
 
+  /**
+   * Router Object
+   */
+  router: {
+    middleware: [
+      'clearErrors'
+    ]
+  },
+
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    './plugins/mixins/user.js'
+    './plugins/mixins/user.js',
+    './plugins/mixins/validation.js',
+    './plugins/axios.js'
   ],
 
   /*

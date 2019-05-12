@@ -1,10 +1,5 @@
 <template>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Login</h1>
-            </div>
-        </div>
 
         <div class="row justify-content-center" v-if="!submitting">
             <div class="col-md-6">
@@ -22,12 +17,14 @@
                     <div class="form-group">
                         <label>Email:</label>
                         <input v-model="form.email" type="email" class="form-control" placeholder="Enter Email">
+                        <small class="form-text text-danger" v-if="errors.email">{{errors.email[0]}}</small>
                     </div>
                     <!-- /Email -->
                     <!-- Password -->
                     <div class="form-group">
                         <label>Password:</label>
                         <input v-model="form.password" type="password" class="form-control" placeholder="Enter Password">
+                        <small class="form-text text-danger" v-if="errors.password">{{errors.password[0]}}</small>
                     </div>
                     <!-- /Password -->
                     <button class="btn btn-primary">Login</button>
@@ -62,14 +59,15 @@ export default {
     methods: {
         async login() {
             this.submitting = true;
-            await this.$auth.loginWith("local", {
-                data: this.form
-            }).then(() => {
+            try {
+                await this.$auth.loginWith("local", {
+                    data: this.form
+                });
                 this.$router.push('/')
-            }).catch((error) => {
+            } catch(e) {
                 this.submitting = false;
                 this.loginError = true;
-            });
+            }
 
         }
     },
