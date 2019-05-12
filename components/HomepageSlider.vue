@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="row" v-if="Object.keys(featured).length > 0">
-        <div class="col-3 mb-3 featured" v-for="movie in featured" :key="movie.id">
+        <div class="col-3 mb-3 featured" v-for="movie in featured" :key="movie.id" @click="viewMovie(movie.id)">
             <img class="img-fluid" :src='"https://image.tmdb.org/t/p/w500/" + movie.poster_path'>
             <h2 class="movie-title text-white mb-0">{{movie.title}}</h2>
             <small class="text-white"><i>{{movie.release_date}}</i></small>
@@ -29,8 +29,9 @@ export default {
                 this.featured = res.data.results;
             })
         },
-        test() {
-            alert('clicked')
+        viewMovie(id) {
+            let url = '/movie/' + id;
+            this.$router.push(url);
         }
     },
     filters: {

@@ -1,28 +1,34 @@
 <template>
     <div class="container-fluid">
-
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form @submit.prevent="register">
-                <div class="form-group">
-                    <label>Username:</label>
-                    <input type="text" class="form-control" v-model="form.name">
-                    <small class="form-text text-danger" v-if="errors.name">{{errors.name[0]}}</small>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6 text-dark">
+                <div class="card">
+                    <div class="card-header">
+                        Register
+                    </div>
+                    <div class="card-body">
+                    <form @submit.prevent="register">
+                    <div class="form-group">
+                        <label>Username:</label>
+                        <input type="text" class="form-control" v-model="form.name">
+                        <small class="form-text text-danger" v-if="errors.name">{{errors.name[0]}}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" class="form-control" v-model="form.email">
+                        <small class="form-text text-danger" v-if="errors.email">{{errors.email[0]}}</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" class="form-control" v-model="form.password">
+                        <small class="form-text text-danger" v-if="errors.password">{{errors.password[0]}}</small>
+                    </div>
+                    <button class="btn btn-primary">Create Account</button>
+                    </form>
+                    <br>
+                    <p>Already have an account? <nuxt-link to="/login">Login</nuxt-link></p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Email:</label>
-                    <input type="email" class="form-control" v-model="form.email">
-                    <small class="form-text text-danger" v-if="errors.email">{{errors.email[0]}}</small>
-                </div>
-                <div class="form-group">
-                    <label>Password:</label>
-                    <input type="password" class="form-control" v-model="form.password">
-                    <small class="form-text text-danger" v-if="errors.password">{{errors.password[0]}}</small>
-                </div>
-                <button class="btn btn-primary">Create Account</button>
-                </form>
-                <br>
-                <p>Already have an account? <nuxt-link to="/login">Login</nuxt-link></p>
             </div>
         </div>
     </div>

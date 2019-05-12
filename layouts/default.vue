@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black">
+  <div class="bg-black text-white">
     <Navbar />
     <nuxt />
   </div>
@@ -22,4 +22,11 @@ html {
 .bg-black {
   background-color: black !important;
 }
+
+.nofocus:focus {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
 </style>
