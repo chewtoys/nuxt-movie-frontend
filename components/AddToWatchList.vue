@@ -14,7 +14,10 @@ export default {
                 movie_image_path: this.movie.poster_path
             })
             .then(res => {
-                // this.movie = res;
+                console.log(res);
+                this.$toasted.success(res.movie_title + ' Added to Watch List', {
+                    position: 'bottom-right'
+                }).goAway(1000);
             });
         }
     },

@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid">
-    <Movies v-if="movies" :movies="movies" />
+    <Movies v-if="movies" :movies="movies" :paginate="false" />
 </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
             }
         }).then(res => {
             return {
-                movies: res.results
+                movies: res
             }
         });
     },

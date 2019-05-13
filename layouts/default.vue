@@ -1,7 +1,9 @@
 <template>
   <div class="bg-black text-white">
     <Navbar />
+    <main class="my-3">
     <nuxt />
+    </main>
   </div>
 </template>
 

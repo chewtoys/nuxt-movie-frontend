@@ -39,6 +39,7 @@ export default {
   ** Global CSS
   */
   css: [
+    // './assets/scss/bootstrap.scss'
   ],
 
   /**
@@ -56,7 +57,10 @@ export default {
   plugins: [
     './plugins/mixins/user.js',
     './plugins/mixins/validation.js',
-    './plugins/axios.js'
+    './plugins/axios.js',
+    { src: './plugins/toasted.js', ssr: false },
+    './plugins/bootstrap-vue.js'
+    // './plugins/toasted.js'
   ],
 
   /*
@@ -72,7 +76,7 @@ export default {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://127.0.0.1:8000/"
+    baseURL: "http://178.128.156.52"
   },
 
 auth: {

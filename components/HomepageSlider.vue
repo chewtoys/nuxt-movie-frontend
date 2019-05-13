@@ -15,7 +15,7 @@ import axios from 'axios';
 
 export default {
     asyncData({ app, params, query, error }) {
-        return app.$axios.$get('http://localhost:8000/api/v1/moviedb/movies/trending')
+        return app.$axios.$get('http://178.128.156.52/api/v1/moviedb/movies/trending')
         .then(res => {
             featured = res.data.results;
         })

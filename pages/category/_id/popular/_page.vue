@@ -1,6 +1,6 @@
 <template>
 <div>
-    <Movies v-if="movies" :movies="movies" />
+    <Movies v-if="movies" :movies="movies" :path="'/category/' + this.$router.currentRoute.params.id + '/popular'" />
 </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
     },
     data() {
         return {
-            movies: {}
+            movies: {},
         }
     },
     created () {
@@ -21,10 +21,14 @@ export default {
     },
     methods: {
         async  getFeatured() {
-            await this.$axios.$get('/api/v1/moviedb/movies/category/' + this.$router.currentRoute.params.id)
+            await this.$axios.$get('/api/v1/moviedb/movies/category/' + this.$router.currentRoute.params.id, { 
+                params: { 
+                    page: this.$router.currentRoute.params.page
+                } 
+            })
             .then(res => {
                 console.log(res);
-                this.movies = res.results;
+                this.movies = res;
             });
         },
         viewMovie(id) {
