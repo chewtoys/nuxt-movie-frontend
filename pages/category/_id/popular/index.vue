@@ -7,7 +7,14 @@
 <script>
 import axios from 'axios';
 import Movies from '~/components/Movies.vue'
+import Categories from '~/assets/json/categories.json'
+
 export default {
+    head () {
+        return {
+            title: 'Popular Movies',
+        }
+    },
     layout: "movies",
     watchQuery: ['page'],
     asyncData({ app, params, query, error }) {

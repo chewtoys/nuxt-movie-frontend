@@ -36,6 +36,11 @@
 
 <script>
 export default {
+    head () {
+        return {
+            title: 'Register',
+        }
+    },
     data() {
         return {
             form: {

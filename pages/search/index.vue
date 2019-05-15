@@ -8,6 +8,12 @@
 import axios from 'axios';
 import Movies from '~/components/Movies.vue'
 export default {
+    head () {
+        return {
+            title: 'Search: ' + this.$router.currentRoute.query.search,
+        }
+    },
+    middleware: 'checkSearchQuery',
     layout: "movies",
     watchQuery: true,
     asyncData({ app, params, query, error }) {
@@ -26,7 +32,6 @@ export default {
         Movies,
     },
     created () {
-        
     },
     methods: {
         viewMovie(id) {
