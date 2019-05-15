@@ -2,7 +2,7 @@
   <div class="bg-black text-white">
     <Navbar />
     <main class="my-3">
-    <nuxt />
+      <nuxt />
     </main>
   </div>
 </template>
@@ -17,10 +17,6 @@ export default {
 </script>
 
 <style>
-html {
-  font-family: 'Roboto Condensed', sans-serif;
-  background-color: black !important;
-}
 .bg-black {
   background-color: black !important;
 }

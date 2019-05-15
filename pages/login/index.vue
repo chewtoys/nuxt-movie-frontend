@@ -1,6 +1,5 @@
 <template>
     <div class="container-fluid">
-
         <div class="row justify-content-center mt-3">
             <div class="col-md-6 text-dark">
                 <div class="card">
@@ -37,7 +36,7 @@
                         <!-- /Login Form -->
                         <br>
                         <p>Dont have an account? <nuxt-link to="/register">Register Now</nuxt-link></p>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,8 +62,9 @@ export default {
             try {
                 await this.$auth.loginWith("local", {
                     data: this.form
+                }).then(res => {
+                    this.$router.push('/')
                 });
-                this.$router.push('/')
             } catch(e) {
                 this.submitting = false;
                 this.loginError = true;

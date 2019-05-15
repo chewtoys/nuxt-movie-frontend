@@ -1,22 +1,27 @@
 <template>
 <div>
     <div class="row">
-        <div class="col-3 mb-3 featured" v-for="movie in movies.results" :key="movie.id" @click="viewMovie(movie.id)">
-            <img v-if="movie.poster_path" class="img-fluid" :src='"https://image.tmdb.org/t/p/w500/" + movie.poster_path'>
-            <img class="img-fluid" v-else-if="!movie.poster_path" />
-            <h2 class="movie-title text-white mb-0">{{movie.title}}</h2>
-            <p class="text-white mb-0 release-date"><i>{{movie.release_date}}</i></p>
+        <div class="col-12">
+            <h1>Watchlist</h1>
         </div>
     </div>
-    <div class="row" v-if="paginate">
+    <div class="row">
+        <div class="col-3 mb-3 featured" v-for="movie in watchlist.data" :key="movie.movie_id" @click="viewMovie(movie.movie_id)">
+            <img v-if="movie.movie_image_path" class="img-fluid" :src='"https://image.tmdb.org/t/p/w500/" + movie.movie_image_path'>
+            <img class="img-fluid" v-else-if="!movie.movie_image_path" />
+            <h2 class="movie-title text-white mb-0">{{movie.movie_title}}</h2>
+            <!-- <p class="text-white mb-0 release-date">Added: <i>{{movie.release_date}}</i></p> -->
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="overflow-auto">
-                <b-pagination-nav 
+                <b-pagination-nav
+                v-if="watchlist"
                 :link-gen="linkGen" 
-                :number-of-pages="pageCount"
+                :number-of-pages="this.watchlist.last_page"
                 use-router 
                 align="center"
-                class="bg-black"
                 >
                 </b-pagination-nav>
             </div>
@@ -27,18 +32,20 @@
 
 <script>
 export default {
-    props: {
-      movies: {
-        type: Object,
-        default: {}
-      },
-      paginate: {
-          type: Boolean,
-          default: true
-      }
-    },
-    created() {
-
+    layout: "movies",
+    middleware: ['auth'],
+    watchQuery: ['page'],
+    asyncData({ app, params, query, error }) {
+        return app.$axios.$get('/api/v1/user/watchlist', {
+            params: { 
+                page: query.page
+            } 
+        })
+        .then(res => {
+            return {
+                watchlist: res
+            }
+        });
     },
     methods: {
         viewMovie(id) {
@@ -50,16 +57,6 @@ export default {
             return pageNum === 1 ? '?' : `?page=${pageNum}`
         }
     },
-    computed: {
-        // max pageCount of 1000
-        pageCount: function () {
-            if (this.movies.total_pages < 1000) {
-                return this.movies.total_pages
-            } else {
-                return 1000;
-            }
-        }
-    }
 }
 </script>
 

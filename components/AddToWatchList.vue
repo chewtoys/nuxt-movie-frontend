@@ -7,7 +7,7 @@ export default {
     props: ['movie'],
     methods: {
         async addToWatchList() {
-            await this.$axios.$post('/api/v1/user/addToWatchList', {
+            await this.$axios.$post('/api/v1/user/watchlist/add', {
                 movie_id: this.movie.id,
                 imdb_movie_id: this.movie.imdb_id,
                 movie_title: this.movie.title,

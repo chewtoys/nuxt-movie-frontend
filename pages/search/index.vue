@@ -8,6 +8,7 @@
 import axios from 'axios';
 import Movies from '~/components/Movies.vue'
 export default {
+    layout: "movies",
     watchQuery: true,
     asyncData({ app, params, query, error }) {
         return app.$axios.$get('/api/v1/moviedb/movies/search', {

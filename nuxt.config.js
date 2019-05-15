@@ -15,18 +15,15 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: "stylesheet", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" },
       { rel: "stylesheet", 
         href: "https://use.fontawesome.com/releases/v5.8.2/css/all.css",
         integrity: "sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay",
         crossorigin: "anonymous"
       },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Roboto+Condensed"}
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Roboto+Condensed"},
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Lato"}
     ],
     script: [
-      { src: "https://code.jquery.com/jquery-3.3.1.slim.min.js", type: "text/javascript" },
-      { src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js", type: "text/javascript" },
-      { src: "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", type: "text/javascript" }
     ]
   },
 
@@ -39,7 +36,8 @@ export default {
   ** Global CSS
   */
   css: [
-    // './assets/scss/bootstrap.scss'
+    './assets/scss/bootstrap.scss',
+    './assets/css/main.css'
   ],
 
   /**
@@ -76,7 +74,7 @@ export default {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://178.128.156.52"
+    baseURL: "http://178.128.156.52",
   },
 
 auth: {

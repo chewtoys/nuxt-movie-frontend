@@ -23,6 +23,8 @@
     "vue-toasted": "^1.1.26"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.18.9",
+    "sass-loader": "^7.1.0"
   }
 }

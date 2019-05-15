@@ -57,8 +57,9 @@ export default {
                         email: this.form.email,
                         password: this.form.password
                     }
+                }).then(res => {
+                    this.$router.push('/')
                 });
-                this.$router.push('/');
             } catch(e) {
                 this.submitting = false;
             }
