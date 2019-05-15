@@ -32,6 +32,11 @@
 
 <script>
 export default {
+    head () {
+        return {
+            title: 'Watchlist',
+        }
+    },
     layout: "movies",
     middleware: ['auth'],
     watchQuery: ['page'],

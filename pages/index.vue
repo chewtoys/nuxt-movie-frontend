@@ -12,7 +12,8 @@ export default {
     return {
       title: 'Home',
       meta: [
-        { hid: 'description', name: 'description', content: 'My custom description' }
+        { hid: 'description', name: 'description', 
+        content: 'A Nuxt.js application for displaying movies from The Movie Database (TMDb) API.' }
       ]
     }
   },

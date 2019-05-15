@@ -42,8 +42,7 @@ export default {
         return {
         title: this.movie.title,
         meta: [
-            { hid: 'description', name: 'description', 
-            content: this.movie.title + ' | ' + this.movie.overview }
+            { hid: 'description', name: 'description', content: this.movie.title + ' | ' + this.movie.overview }
         ]
         }
     },
