@@ -49,6 +49,11 @@ export default {
     ]
   },
 
+  /**
+   * Server Middleware
+   */
+  serverMiddleware: ['redirect-ssl'],
+
   /*
   ** Plugins to load before mounting the App
   */
@@ -74,7 +79,7 @@ export default {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://178.128.156.52",
+    baseURL: "https://backend.nuxtmovies.com",
   },
 
 auth: {
